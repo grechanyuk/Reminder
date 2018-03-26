@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Reminder</string>
     <string name="txtToolbarSearch">Search</string>
+    <string name="txtNavigationRemind">Напоминания</string>
+    <string name="txtNavigationOpen">Open</string>
+    <string name="txtNavigationClose">Close</string>
 </resources>
