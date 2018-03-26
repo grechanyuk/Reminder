@@ -5,7 +5,7 @@
         android:id="@+id/navigationRemind"
         android:orderInCategory="1"
         android:title="@string/txtNavigationRemind"
-        android:icon="@drawable/message_bulleted" />
+        android:icon="@mipmap/ic_message_bulleted" />
 
 
 </menu>
