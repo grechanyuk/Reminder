@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">Reminder</string>
     <string name="txtToolbarSearch">Search</string>
-    <string name="txtNavigationRemind">Напоминания</string>
+    <string name="txtNavigationIdeas">Идеи</string>
     <string name="txtNavigationOpen">Open</string>
     <string name="txtNavigationClose">Close</string>
+    <string name="txtTabHistory">История</string>
+    <string name="txtTabIdeas">Идеи</string>
+    <string name="txtTabToDo">Сделать</string>
+    <string name="txtTabBirthday">ДР</string>
 </resources>

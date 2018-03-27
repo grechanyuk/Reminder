@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.eg.developer.reminder.adapter.TabsPagerFragmentAdapter;
+import com.eg.developer.reminder.adapter.TabsFragmentAdapter;
 import com.eg.developer.reminder.extensions.Constants;
 
 /**
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
 
-        TabsPagerFragmentAdapter adapter = new TabsPagerFragmentAdapter(getSupportFragmentManager());
+        TabsFragmentAdapter adapter = new TabsFragmentAdapter(this, getSupportFragmentManager()); //this - потому что находимся в активити
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -84,6 +84,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showNotificationTab() { //Выполняет переход на табу "Напоминания"
-        viewPager.setCurrentItem(Constants.TAB_REMIND_ID);
+        viewPager.setCurrentItem(Constants.TAB_IDEAS_POSITION);
     }
 }
