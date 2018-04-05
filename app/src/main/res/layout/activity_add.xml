@@ -12,13 +12,13 @@
         android:layout_height="wrap_content">
 
         <include
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_add"
             layout="@layout/toolbar_add" />
 
     </android.support.design.widget.AppBarLayout>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/addTitleRemind"
         android:layout_width="339dp"
         android:layout_height="46dp"
         android:layout_marginEnd="8dp"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/addDescriptionRemind"
         android:layout_width="339dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -46,5 +46,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/addTitleRemind" />
 </android.support.constraint.ConstraintLayout>
