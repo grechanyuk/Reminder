@@ -8,4 +8,7 @@
     <string name="txtTabIdeas">Идеи</string>
     <string name="txtTabToDo">Сделать</string>
     <string name="txtTabBirthday">ДР</string>
+    <string name="txtTitle">Заголовок</string>
+    <string name="txtDescription">Описание задачи</string>
+    <string name="txtAdd">Добавить</string>
 </resources>
