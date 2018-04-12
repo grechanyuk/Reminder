@@ -1,7 +1,6 @@
 package com.eg.developer.reminder;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,7 +14,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.eg.developer.reminder.DB.DBHelper;
 import com.eg.developer.reminder.adapter.TabsFragmentAdapter;
 import com.eg.developer.reminder.extensions.Constants;
 
@@ -42,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initTabs() {
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        viewPager = findViewById(R.id.viewPager);
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
 
         TabsFragmentAdapter adapter = new TabsFragmentAdapter(this, getSupportFragmentManager()); //this - потому что находимся в активити
         viewPager.setAdapter(adapter);
@@ -52,20 +50,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initNavigationView() {
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.txtNavigationOpen, R.string.txtNavigationClose); //Создает бургер меню
         drawerLayout.setDrawerListener(toggle);
         toggle.syncState(); //Держит Табы и элементы из бокового меню в синхроне
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
+        NavigationView navigationView = findViewById(R.id.navigation);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) { //Открываем нужную табу по клику на элемент бокового меню
                 drawerLayout.closeDrawers();
                 switch (item.getItemId()) {
-                    case R.id.navigationRemind:
-                        showNotificationTab();
+                    case R.id.navigationIdeas:
+                        showNotificationTab(Constants.TAB_IDEAS_POSITION);
+                        break;
+                    case R.id.navigationHistory:
+                        showNotificationTab(Constants.TAB_HISTORY_POSITION);
+                        break;
+                    case R.id.navigationBirthday:
+                        showNotificationTab(Constants.TAB_BIRTHDAY_POSITION);
+                        break;
+                    case R.id.navigationToDo:
+                        showNotificationTab(Constants.TAB_TODO_POSITION);
                         break;
                 }
                 return true;
@@ -79,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initToolbar() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -92,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.inflateMenu(R.menu.menu);
     }
 
-    private void showNotificationTab() { //Выполняет переход на табу "Напоминания"
-        viewPager.setCurrentItem(Constants.TAB_IDEAS_POSITION);
+    private void showNotificationTab(int position) { //Выполняет переход на табу "Напоминания"
+        viewPager.setCurrentItem(position);
     }
 }

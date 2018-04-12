@@ -11,9 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.eg.developer.reminder.DB.DBHelper;
-import com.eg.developer.reminder.MainActivity;
 import com.eg.developer.reminder.R;
 import com.eg.developer.reminder.abstracts.AbstractTabFragment;
 import com.eg.developer.reminder.adapter.RemindListAdapter;
@@ -48,7 +48,7 @@ public class HistoryFragment extends AbstractTabFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
 
-        RecyclerView rv = (RecyclerView) view.findViewById(R.id.recyclerView); //Сюда будут подгружаться задачи
+        RecyclerView rv = view.findViewById(R.id.recyclerViewHistory); //Сюда будут подгружаться задачи
         rv.setLayoutManager(new LinearLayoutManager(context));
         rv.setAdapter(new RemindListAdapter(localData())); //Сюда будем вставлять данные с SQLite
 
@@ -67,10 +67,20 @@ public class HistoryFragment extends AbstractTabFragment {
             int titleIndex = cursor.getColumnIndex(DBHelper.KEY_TITLE);
             int descriptionIndex = cursor.getColumnIndex(DBHelper.KEY_DESCRIPTION);
             do {
-                data.add(new RemindDTO(cursor.getString(titleIndex)));
+                data.add(new RemindDTO(cursor.getString(titleIndex), cursor.getString(descriptionIndex), cursor.getInt(remindIdIndex)));
             } while (cursor.moveToNext());
-        } else
-            Log.d("mLog","0 rows");
+        } else {
+            TextView textView = view.findViewById(R.id.noDataHistory);
+            textView.setText(R.string.txtNoDataHistory);
+            textView.setVisibility(View.VISIBLE);
+        }
+
         return data;
+    }
+
+    @Override
+    public void onResume() {
+
+        super.onResume();
     }
 }

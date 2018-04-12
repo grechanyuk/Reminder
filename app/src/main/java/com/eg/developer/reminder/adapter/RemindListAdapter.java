@@ -35,6 +35,7 @@ public class RemindListAdapter extends RecyclerView.Adapter<RemindListAdapter.Re
     public void onBindViewHolder(RemindViewHolder holder, int position) {
         RemindDTO item = data.get(position); //Берем по позиции элемент из "Массива" с сервака
         holder.title.setText(item.getTitle()); //Проставляем заголовок
+        holder.description.setText(item.getDescription()); //Проставляем описание
     }
 
     @Override
@@ -46,11 +47,13 @@ public class RemindListAdapter extends RecyclerView.Adapter<RemindListAdapter.Re
 
         private CardView cardView; //Элементы, которыми будем управлять
         private TextView title; //Элементы, которыми будем управлять
+        private TextView description; //Элементы, которыми будем управлять
 
         public RemindViewHolder(View itemView) {
             super(itemView);
-            cardView = (CardView) itemView.findViewById(R.id.cardView);
-            title = (TextView) itemView.findViewById(R.id.title);
+            cardView = itemView.findViewById(R.id.cardView);
+            title = itemView.findViewById(R.id.title);
+            description = itemView.findViewById(R.id.description);
         }
     }
 }

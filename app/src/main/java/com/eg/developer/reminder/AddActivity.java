@@ -9,9 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.eg.developer.reminder.DB.DBHelper;
+import com.eg.developer.reminder.extensions.Constants;
+import com.eg.developer.reminder.fragments.HistoryFragment;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -21,14 +24,7 @@ public class AddActivity extends AppCompatActivity {
 
     private String title;
     private String description;
-    private int category_id;
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if(title != "" && description != "" && category_id != 0)
-            insertToDB();
-    }
+    private int category_id = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +35,7 @@ public class AddActivity extends AppCompatActivity {
     }
 
     private void initToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_add);
+        Toolbar toolbar = findViewById(R.id.toolbar_add);
         toolbar.setTitle(R.string.txtAdd);
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -56,14 +52,31 @@ public class AddActivity extends AppCompatActivity {
     private void addRemind() {
         EditText title = findViewById(R.id.addTitleRemind);
         EditText description = findViewById(R.id.addDescriptionRemind);
+        RadioButton radioButtonIdeas = findViewById(R.id.radioIdeas);
+        RadioButton radioButtonToDo = findViewById(R.id.radioToDo);
+        RadioButton radioButtonBirthdays = findViewById(R.id.radioBirthday);
 
         this.title = title.getText().toString();
         this.description = description.getText().toString();
-        this.category_id = 1;
 
-        Toast.makeText(getApplicationContext(),"Типа добавилось", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        if(radioButtonBirthdays.isChecked()) {
+            this.category_id = Constants.BIRTHDAY_CATEGORY_ID;
+        } else if(radioButtonIdeas.isChecked()) {
+            this.category_id = Constants.IDEAS_CATEGORY_ID;
+        } else if(radioButtonToDo.isChecked()) {
+            this.category_id = Constants.TODO_CATEGORY_ID;
+        }
+
+
+        if(this.title != "" && this.description != "" && this.category_id != 0) {
+            insertToDB();
+            makeText(getString(R.string.txtAddedSuccess));
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+        else {
+            makeText(getString(R.string.txtAddError));
+        }
     }
 
     private void insertToDB() {
@@ -77,5 +90,9 @@ public class AddActivity extends AppCompatActivity {
 
         sqLiteDatabase.insert(DBHelper.TABLE_REMINDERS, null, contentValues);
         sqLiteDatabase.close();
+    }
+
+    private void makeText(String string) {
+        Toast.makeText(getApplicationContext(), string, Toast.LENGTH_LONG).show();
     }
 }

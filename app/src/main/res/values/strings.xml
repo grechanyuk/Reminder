@@ -11,4 +11,16 @@
     <string name="txtTitle">Заголовок</string>
     <string name="txtDescription">Описание задачи</string>
     <string name="txtAdd">Добавить</string>
+    <string name="radioIdea">Идея!</string>
+    <string name="radioToDo">Сделать</string>
+    <string name="radioBirthday">День рождения</string>
+    <string name="txtAddError">Проверьте правильность заполнения</string>
+    <string name="txtAddedSuccess">Успешно добавлено!</string>
+    <string name="txtNoDataHistory">Вы пока не добавляли ни одного напоминания</string>
+    <string name="txtNoDataBirthday">Вы не добавили ни одного дня рождения</string>
+    <string name="txtNoDataToDo">Вы не добавили ни одного дела</string>
+    <string name="txtNoDataIdeas">У вас не было ни одной идеи</string>
+    <string name="navigationHistory">История</string>
+    <string name="navigationToDo">Сделать</string>
+    <string name="navigationBirthday">Дни рождения</string>
 </resources>

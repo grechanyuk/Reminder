@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tabIndicatorColor="@color/colorWhite"
-                app:tabIndicatorHeight="6dp"
+                app:tabIndicatorHeight="2dp"
                 app:tabSelectedTextColor="@color/colorWhite"
                 app:tabTextColor="@color/colorWhite" /> <!-- tabIndicatorColor - цвет, которым будет подсвечиваться выбранные элемент в виде полоски. tabIndicatorHeight - высота, то бишь толщина данной полоски. tabSelectedTextColor - цвет текста выбранного элемента. tabTextColor - цвет остальных элементов -->
 

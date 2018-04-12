@@ -2,9 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigationRemind"
+        android:id="@+id/navigationHistory"
         android:orderInCategory="1"
+        android:title="@string/navigationHistory"
+        android:icon="@mipmap/ic_history" />
+
+    <item
+        android:id="@+id/navigationIdeas"
+        android:orderInCategory="2"
         android:title="@string/txtNavigationIdeas"
+        android:icon="@mipmap/ic_lightbulb_on" />
+
+    <item
+        android:id="@+id/navigationToDo"
+        android:orderInCategory="3"
+        android:title="@string/navigationToDo"
+        android:icon="@mipmap/ic_ticket" />
+    <item
+        android:id="@+id/navigationBirthday"
+        android:orderInCategory="4"
+        android:title="@string/navigationBirthday"
         android:icon="@mipmap/ic_message_bulleted" />
 
 

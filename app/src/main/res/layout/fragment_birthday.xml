@@ -6,14 +6,14 @@
     android:paddingTop="5dp">
 
     <TextView
-        android:id="@+id/noDataHistory"
+        android:id="@+id/noDataBirthday"
         android:textSize="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"/>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewHistory"
+        android:id="@+id/recyclerViewBirthday"
         android:layout_height="match_parent"
         android:layout_width="match_parent" />
 
